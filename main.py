@@ -1,30 +1,27 @@
 import telebot
 
-BOT_TOKEN = '5834635307:AAH0SSwTxpduRdFJBJnPcF-hii7Bt9RKL4U'
+# Replace 'YOUR_BOT_TOKEN' with your actual bot token
+BOT_TOKEN = '7112992837:AAH3mqoU5STfs9CZ7PcqIKBQFbHbeOCHFDI'
 bot = telebot.TeleBot(BOT_TOKEN)
+
+# Define the chat ID of the bot owner (you can find this by sending a message to the bot and checking the chat ID)
+owner_chat_id = '1415184461'
 
 # Command: /start or /hello
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
+    bot.reply_to(message, "Through this Bot You Can Talk to @PiratesDeveloper 😁")
 
 # Command: /help
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['know_jarvis'])
 def send_help(message):
-    help_text = "Welcome to the ChatBot! Here are the available commands:\n\n" \
-                "/start or /hello - Greet the bot\n" \
-                "/help - Display this help message\n" \
-                "/settings - Configure bot settings\n" \
-                "Feel free to ask anything else!"
+    help_text = "You Want to Know about Jarvis. See @Know_About_Jarvis"
     bot.reply_to(message, help_text)
 
 # Command: /settings
 @bot.message_handler(commands=['settings'])
 def send_settings(message):
-    settings_text = "Bot settings:\n" \
-                    "- Language: English\n" \
-                    "- Notifications: On\n" \
-                    "You can customize these settings in the future."
+    settings_text = "Nothing Now. Planning to Add Some Features Soon 😜" 
     bot.reply_to(message, settings_text)
 
 # Custom replies based on user input
@@ -32,12 +29,15 @@ def send_settings(message):
 def echo_all(message):
     text = message.text.lower()
     if "how are you" in text:
-        bot.reply_to(message, "I'm just a bot, but I'm doing fine! How can I assist you?")
+        bot.reply_to(message, "I'm doing fine! Thanks For Asking 🥰.\n\nWhat help Do you Want?")
     elif "thank you" in text:
         bot.reply_to(message, "You're welcome! 😊")
+    elif "movie" in text:
+        bot.reply_to(message, "I don't Give Movies. Do you Have Something Else to Ask to Jarvis")
     else:
-        bot.reply_to(message, "I didn't quite catch that. Feel free to ask again!")
+        bot.reply_to(message, "When Jarvis Came Online He'll Surely Reply To You.")
+
 
 # Start polling
-bot.polling()
-  
+if __name__ == '__main__':
+    bot.polling(none_stop=True)
