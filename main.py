@@ -56,5 +56,8 @@ def echo_all(message):
 print('PROGRAM STARTED')
 # Start pollin
 while True:
-    bot.polling()
+    try:
+        bot.polling()
+    except:
+        continue
 print('PROGRAM STOPPED')
